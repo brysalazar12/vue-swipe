@@ -457,11 +457,13 @@
         this.dragging = true;
         this.userScrolling = false;
         this.doOnTouchStart(event);
+        this.$dispatch('touch-start', event);
       });
 
       element.addEventListener('touchmove', (event) => {
         if (!this.dragging) return;
         this.doOnTouchMove(event);
+        this.$dispatch('touch-move', event);
       });
 
       element.addEventListener('touchend', (event) => {
@@ -473,6 +475,7 @@
         if (!this.dragging) return;
         this.doOnTouchEnd(event);
         this.dragging = false;
+        this.$dispatch('touch-end', event);
       });
     }
   };
